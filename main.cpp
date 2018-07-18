@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 
 #include "Accounts.h"
 #include "User.h"
@@ -7,6 +8,11 @@
 
 using namespace std;
 
+void save(std::string json) {
+    ofstream f("data.json");
+    f << json;
+    f.close();
+}
 int main(void) {
 
     Accounts accounts;
@@ -34,7 +40,7 @@ int main(void) {
     accounts.add_item(u3, i5);
     accounts.add_item(u3, i6);
 
-    std::cout << accounts.to_json() << std::endl;
+    save(accounts.to_json());
 
 
     return 0;
