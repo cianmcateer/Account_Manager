@@ -5,13 +5,19 @@ Item_Store::Item_Store() {}
 
 Item_Store::~Item_Store() {}
 
-std::string Item_Store::to_json() {
-    return "";
+nlohmann::json Item_Store::to_json() {
+    nlohmann::json json_array = nlohmann::json::array();
+
+    for(auto& item : item_list) {
+        json_array.push_back(item.to_json());
+    }
+
+    return json_array;
 }
 
 std::ostream& operator<<(std::ostream& os, const Item_Store& is) {
     for(const auto& items : is.item_list) {
-        os << items << std::endl;
+        os << '\t' << items << std::endl;
     }
     return os;
 }

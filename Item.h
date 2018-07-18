@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+#include <nlohmann/json.hpp>
+
 class Item {
 private:
     std::string name;
@@ -13,8 +15,8 @@ private:
 public:
     ~Item();
     Item(std::string name, std::string description, float weight, int size);
-        
-    std::string to_json();
+
+    nlohmann::json to_json();
     friend std::ostream& operator<<(std::ostream& os, const Item i);
 
 };

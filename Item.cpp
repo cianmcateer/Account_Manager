@@ -5,8 +5,16 @@ Item::~Item() {}
 Item::Item(std::string name, std::string description, float weight, int size)
     : name(name), description(description), weight(weight), size(size) {}
 
-std::string Item::to_json() {
-    return "";
+nlohmann::json Item::to_json() {
+
+    nlohmann::json j;
+
+    j["name"] = name;
+    j["description"] = description;
+    j["weight"] = weight;
+    j["size"] = size;
+
+    return j;
 }
 
 std::ostream& operator<<(std::ostream& os, const Item i) {

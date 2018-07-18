@@ -5,6 +5,16 @@ User::User(std::string name, int age, std::string email)
 
 User::~User() {}
 
+nlohmann::json User::to_json() {
+    nlohmann::json j;
+
+    j["name"] = name;
+    j["age"] = age;
+    j["email"] = email;
+
+    return j;
+}
+
 std::ostream& operator<<(std::ostream& os, const User& u) {
     os << "NAME: " << u.name << " AGE: " << u.age
         << " EMAIL: " << u.email;

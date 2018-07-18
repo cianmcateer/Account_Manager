@@ -5,6 +5,8 @@
 #include "User.h"
 #include "Item.h"
 
+using namespace std;
+
 int main(void) {
 
     Accounts accounts;
@@ -14,7 +16,26 @@ int main(void) {
     Item i("Box", "A box", 10, 5);
     Item i2("Box1", "A box1", 15, 3);
     accounts.add_item(u, i);
-    std::cout << accounts << std::endl;
+    accounts.add_item(u, i2);
+
+    User u2("John", 54, "John@email");
+    Item i3("x", "box", 13, 55);
+    Item i4("moo", "circle", 5, 11);
+
+    accounts += u2;
+    accounts.add_item(u2, i3);
+    accounts.add_item(u2, i4);
+
+    User u3("Bing", 44, "Bingaling@email.com");
+    Item i5("xi hong shi", "Sa", 22 ,6);
+    Item i6("ping guo", "zo", 866 ,1);
+
+    accounts += u3;
+    accounts.add_item(u3, i5);
+    accounts.add_item(u3, i6);
+
+    std::cout << accounts.to_json() << std::endl;
+
 
     return 0;
 }
